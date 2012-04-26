@@ -1,0 +1,9 @@
+Description:
+    Create layout files
+
+Example:
+    rails generate homura:install
+
+    This will create:
+        config/locales/layout.en.yml
+        app/views/layouts/application.html.slim

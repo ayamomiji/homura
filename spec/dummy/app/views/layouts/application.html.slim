@@ -1,0 +1,15 @@
+doctype 5
+html
+  head
+    meta charset='utf-8'
+    = page_title_tag
+    = page_description_tag
+    = canonical_link_tag
+    = og_properties_tags
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application', media: :all
+    = yield(:extra_head)
+  body
+    = content_for?(:content) ? yield(:content) : yield
+    = javascript_include_tag 'application'
+    = yield(:extra_javascripts)
