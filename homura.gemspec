@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.email         = ['ayaya@ayaya.tw']
   gem.description   = %q{Homura is a simple layout generator and helpers for rails}
   gem.summary       = %q{Homura is a simple layout generator and helpers for rails}
-  gem.homepage      = ''
+  gem.homepage      = 'https://github.com/ayamomiji/homura'
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
