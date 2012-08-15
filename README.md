@@ -42,6 +42,14 @@ In application controller:
 Your app will set locale via params/cookies/http-accept-language before any
 requests.
 
+### Mobile Detection
+
+In application controller:
+
+    include Homura::MobileDetection
+
+Then put your mobile views in `app/mobile_views`.
+
 ## Contributing
 
 1. Fork it
