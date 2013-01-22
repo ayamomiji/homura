@@ -12,9 +12,8 @@ module Homura
       if text.present?
         @page_title = text
         og_properties title: text
-      else
-        @page_title
       end
+      @page_title
     end
 
     def page_title_tag
@@ -30,9 +29,8 @@ module Homura
       if text.present?
         @page_description = text
         og_properties description: text
-      else
-        @page_description
       end
+      @page_description
     end
 
     def page_description_tag
@@ -55,9 +53,8 @@ module Homura
         else
           @canonical_link = url
         end
-      else
-        @canonical_link
       end
+      @canonical_link
     end
 
     def canonical_link_tag
