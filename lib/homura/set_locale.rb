@@ -15,13 +15,13 @@ module Homura
     end
 
     def set_locale
-      if params['locale'] && locale_available?(params['locale'])
-        cookies.permanent['locale'] = locale
-        I18n.locale = locale and return
+      if (param_locale = params['locale']) && locale_available?(param_locale)
+        cookies.permanent['locale'] = param_locale
+        I18n.locale = param_locale and return
       end
 
-      if cookies['locale'] && locale_available?(locale)
-        I18n.locale = locale and return
+      if (cookie_locale = cookies['locale']) && locale_available?(cookie_locale)
+        I18n.locale = cookie_locale and return
       end
 
       http_accept_language = request.headers['HTTP_ACCEPT_LANGUAGE'] || ''
