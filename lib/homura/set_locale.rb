@@ -15,9 +15,10 @@ module Homura
     end
 
     def set_locale
-      if (param_locale = params['locale']) && locale_available?(param_locale)
+      if (param_locale = params.delete('locale')) && locale_available?(param_locale)
         cookies.permanent['locale'] = param_locale
-        I18n.locale = param_locale and return
+        I18n.locale = param_locale
+        redirect_to params and return
       end
 
       if (cookie_locale = cookies['locale']) && locale_available?(cookie_locale)
