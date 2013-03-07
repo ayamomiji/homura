@@ -1,5 +1,8 @@
 module Homura
   module LayoutHelper
+    DEFAULT_PAGE_TITLE_KEY = :'homura.default_page_title'
+    DEFAULT_PAGE_DESCRIPTION_KEY = :'homura.default_page_description'
+
     def controller_action_full_name
       [params[:controller], params[:action]].join('#')
     end
@@ -13,16 +16,16 @@ module Homura
         @page_title = text
         og_properties title: text
       end
-      @page_title
+      @page_title || t('.page_title', default: [DEFAULT_PAGE_TITLE_KEY,
+                                                controller_action_full_name])
     end
 
     def page_title_tag
       if @page_title.blank?
-        @page_title = controller_action_full_name
         logger.warn "in #{controller_action_full_name}:"
         logger.warn 'No page title specified, please use `page_title` helper.'
       end
-      content_tag(:title, t('homura.layout.title', title: @page_title))
+      content_tag(:title, t('homura.layout.title', title: page_title))
     end
 
     def page_description(text = nil)
@@ -30,16 +33,17 @@ module Homura
         @page_description = text
         og_properties description: text
       end
-      @page_description
+      @page_description ||
+        t('.page_description', default: [DEFAULT_PAGE_DESCRIPTION_KEY, ''])
     end
 
     def page_description_tag
       if @page_description.blank?
         logger.warn "in #{controller_action_full_name}:"
         logger.warn 'No page description specified, please use `page_description` helper.'
-        return
-      else
-        tag(:meta, name: :description, content: @page_description)
+      end
+      if page_description.present?
+        tag(:meta, name: :description, content: page_description)
       end
     end
 
