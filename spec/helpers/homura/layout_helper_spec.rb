@@ -26,8 +26,9 @@ describe Homura::LayoutHelper do
   end
 
   describe '#page_title' do
-    it 'should default to nil' do
-      helper.page_title.should be_nil
+    it 'should default to default page title' do
+      helper.stub(t: 'default page title')
+      helper.page_title.should eq('default page title')
     end
 
     it 'should access page title' do
@@ -37,8 +38,9 @@ describe Homura::LayoutHelper do
   end
 
   describe '#page_description' do
-    it 'should default to nil' do
-      helper.page_description.should be_nil
+    it 'should default to default page description' do
+      helper.stub(t: 'default page description')
+      helper.page_description.should eq('default page description')
     end
 
     it 'should access page description' do
