@@ -1,7 +1,0 @@
-en:
-  homura:
-    layout:
-      title: '%{title} | site name'
-      site_name: 'site name'
-    default_page_title: 'site name'
-    default_page_description: 'description here...'

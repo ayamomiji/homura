@@ -3,12 +3,16 @@ module Homura
     source_root File.expand_path('../templates', __FILE__)
 
     def copy_locale_file
-      copy_file 'layout.en.yml', 'config/locales/layout.en.yml'
+      template 'layout.en.yml.erb', 'config/locales/layout.en.yml'
     end
 
     def copy_layout_file
       copy_file 'application.html.slim',
                 'app/views/layouts/application.html.slim'
+    end
+
+    def app_name
+      Rails.root.split.last.to_s.titleize
     end
   end
 end
