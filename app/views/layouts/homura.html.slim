@@ -10,7 +10,7 @@ html
     = csrf_meta_tags
     = stylesheet_link_tag 'application', media: :all, 'data-turbolinks-track' => true
     = yield(:extra_head)
-  body
-    = content_for?(:content) ? yield(:content) : yield
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = yield(:extra_javascripts)
+  body
+    = content_for?(:content) ? yield(:content) : yield
